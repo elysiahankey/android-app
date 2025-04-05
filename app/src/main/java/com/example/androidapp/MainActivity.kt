@@ -25,18 +25,23 @@ class MainActivity : ComponentActivity() {
 fun BookshelfApp() {
     AppTheme {
         var navController = rememberNavController()
-        NavHost(
-            navController = navController,
-            startDestination = Home.route,
-        ) {
-            composable(route = Home.route) {
-                HomeScreen(
-                    onClickGetStarted = { navController.navigateSingleTopTo(Search.route) }
-                )
-            }
-            composable(route = Search.route) {
-                SearchScreen()
-            }
+        NavHost(navController)
+    }
+}
+
+@Composable
+fun NavHost(navController: NavHostController) {
+    NavHost(
+        navController = navController,
+        startDestination = Home.route,
+    ) {
+        composable(route = Home.route) {
+            HomeScreen(
+                onClickGetStarted = { navController.navigateSingleTopTo(Search.route) }
+            )
+        }
+        composable(route = Search.route) {
+            SearchScreen()
         }
     }
 }
