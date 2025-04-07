@@ -1,4 +1,4 @@
-package com.example.androidapp
+package com.example.androidapp.welcome
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -25,9 +25,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androidapp.AppTheme
+import com.example.androidapp.R
 
 @Composable
-fun HomeScreen(onClickGetStarted: () -> Unit) {
+fun WelcomeScreen(onClickGetStarted: () -> Unit) {
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -100,9 +102,9 @@ fun GetStartedButton(onClick: () -> Unit) {
     name = "DefaultPreviewLight"
 )
 @Composable
-fun HomeScreenPreviewLight() {
+fun WelcomeScreenPreviewLight() {
     AppTheme {
-        HomeScreen(onClickGetStarted = {})
+        WelcomeScreen(onClickGetStarted = {})
     }
 
 }

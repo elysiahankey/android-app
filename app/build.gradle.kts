@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.1.20"
 }
 
 android {
@@ -40,7 +41,7 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.androidx.material)
     implementation(libs.androidx.navigation.testing)
     implementation(libs.androidx.navigation.testing.android)
     implementation(libs.androidx.core.ktx)

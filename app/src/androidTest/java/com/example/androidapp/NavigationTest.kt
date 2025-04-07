@@ -45,7 +45,7 @@ class NavigationTest {
     }
 
     @Test
-    fun navHost_verifyHomeStartDestination() {
+    fun navHost_verifyWelcomeStartDestination() {
         composeTestRule
             .onNodeWithText(GetTargetString(R.string.welcome_message))
             .assertIsDisplayed()

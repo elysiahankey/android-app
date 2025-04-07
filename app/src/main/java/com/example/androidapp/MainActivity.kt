@@ -4,12 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.androidapp.mybooks.MyBooksScreen
+import com.example.androidapp.search.SearchScreen
+import com.example.androidapp.welcome.WelcomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +29,13 @@ class MainActivity : ComponentActivity() {
 fun BookshelfApp() {
     AppTheme {
         var navController = rememberNavController()
-        NavHost(navController)
+        Scaffold(
+            bottomBar = {
+                BottomNavBar(navController)
+            }
+        ) { innerPadding ->
+            NavHost(navController)
+        }
     }
 }
 
@@ -33,15 +43,18 @@ fun BookshelfApp() {
 fun NavHost(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Home.route,
+        startDestination = Welcome.route,
     ) {
-        composable(route = Home.route) {
-            HomeScreen(
+        composable(route = Welcome.route) {
+            WelcomeScreen(
                 onClickGetStarted = { navController.navigateSingleTopTo(Search.route) }
             )
         }
         composable(route = Search.route) {
             SearchScreen()
+        }
+        composable(route = MyBooks.route) {
+            MyBooksScreen()
         }
     }
 }

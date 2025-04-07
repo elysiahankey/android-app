@@ -11,6 +11,7 @@ kotlinTest = "2.1.10"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
 composeBom = "2024.09.00"
+material = "1.7.8"
 navigationCompose = "2.8.9"
 navigationTestingAndroid = "2.9.0-alpha09"
 
@@ -18,6 +19,7 @@ navigationTestingAndroid = "2.9.0-alpha09"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTestingVersion" }
 androidx-espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espressoContribVersion" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "material" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navigationCompose" }
 androidx-navigation-testing-android = { module = "androidx.navigation:navigation-testing-android", version.ref = "navigationTestingAndroid" }
