@@ -18,9 +18,14 @@ import com.example.androidapp.R
 
 @Composable
 fun HomeScreen() {
-    Scaffold() { innerPadding ->
+    Scaffold(
+        modifier = Modifier
+            .fillMaxSize()
+    ) { innerPadding ->
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
