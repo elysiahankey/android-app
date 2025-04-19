@@ -52,13 +52,13 @@ class NavigationTest {
     }
 
     @Test
-    fun navHost_clickGetStarted_navigatesToSearch() {
+    fun navHost_clickGetStarted_navigatesToHome() {
         composeTestRule
             .onNodeWithText(GetTargetString(R.string.get_started_button))
             .performClick()
 
         composeTestRule
-            .onNodeWithText(GetTargetString(R.string.search_intro_message))
+            .onNodeWithText(GetTargetString(R.string.home_screen_title))
             .assertIsDisplayed()
     }
 }

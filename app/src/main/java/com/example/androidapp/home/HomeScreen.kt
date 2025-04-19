@@ -13,12 +13,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.androidapp.AppTheme
+import com.example.androidapp.BookshelfApp
+import com.example.androidapp.BottomNavBar
 import com.example.androidapp.R
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
     Scaffold(
+        bottomBar = {
+            BottomNavBar(navController)
+        },
         modifier = Modifier
             .fillMaxSize()
     ) { innerPadding ->
@@ -49,7 +56,9 @@ fun HomeScreen() {
 @Composable
 fun HomeScreenPreviewLight() {
     AppTheme {
-        HomeScreen()
+        HomeScreen(
+            navController = TODO()
+        )
     }
 
 }

@@ -23,9 +23,6 @@ fun BookshelfApp() {
     AppTheme {
         var navController = rememberNavController()
         Scaffold(
-            bottomBar = {
-                    BottomNavBar(navController)
-            }
         ) { innerPadding ->
             NavHost(navController)
         }

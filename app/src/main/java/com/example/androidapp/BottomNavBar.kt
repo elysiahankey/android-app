@@ -52,17 +52,23 @@ fun NavHost(navController: NavHostController) {
     ) {
         composable(route = Welcome.route) {
             WelcomeScreen(
-                onClickGetStarted = { navController.navigateTo(Search.route) }
+                onClickGetStarted = { navController.navigateTo(Home.route) }
             )
         }
         composable(route = Home.route) {
-            HomeScreen()
+            HomeScreen(
+                navController = navController
+            )
         }
         composable(route = Search.route) {
-            SearchScreen()
+            SearchScreen(
+                navController = navController
+            )
         }
         composable(route = MyBooks.route) {
-            MyBooksScreen()
+            MyBooksScreen(
+                navController = navController
+            )
         }
     }
 }

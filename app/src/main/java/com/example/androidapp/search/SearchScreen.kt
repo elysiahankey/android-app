@@ -35,13 +35,21 @@ import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.androidapp.AppTheme
+import com.example.androidapp.BottomNavBar
 import com.example.androidapp.R
 
 @Composable
-fun SearchScreen() {
+fun SearchScreen(navController: NavHostController) {
     AppTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Scaffold(
+            bottomBar = {
+                BottomNavBar(navController)
+            },
+            modifier = Modifier.fillMaxSize()
+        ) { innerPadding ->
             Column(
                 modifier = Modifier
                     .padding(vertical = 50.dp, horizontal = 20.dp)
@@ -148,7 +156,9 @@ fun BookSearchBar(
 @Composable
 fun SearchScreenPreviewLight() {
     AppTheme {
-        SearchScreen()
+        SearchScreen(
+            navController = TODO()
+        )
     }
 
 }
