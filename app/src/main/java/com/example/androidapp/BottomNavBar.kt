@@ -2,8 +2,8 @@ package com.example.androidapp
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,12 +23,11 @@ import com.example.androidapp.welcome.WelcomeScreen
 
 @Composable
 fun BottomNavBar(navController: NavHostController) {
-    BottomNavigation {
-//        val shouldShowBottomBar: Boolean
+    NavigationBar {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
         topLevelRoutes.forEach { topLevelRoute ->
-            BottomNavigationItem(
+            NavigationBarItem(
                 icon = { topLevelRoute.icon },
                 label = { Text(topLevelRoute.name) },
                 selected = currentDestination?.hierarchy?.any {
@@ -86,11 +85,13 @@ fun NavHostController.navigateTo(route: String) =
 
 @Preview(
     uiMode = UI_MODE_NIGHT_YES,
-    name = "DefaultPreviewDark"
+    name = "DefaultPreviewDark",
+    showBackground = true
 )
 @Preview(
     uiMode = UI_MODE_NIGHT_NO,
-    name = "DefaultPreviewLight"
+    name = "DefaultPreviewLight",
+    showBackground = true
 )
 @Composable
 fun BottomNavBarPreviewLight() {

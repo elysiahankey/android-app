@@ -95,11 +95,13 @@ fun GetStartedButton(onClick: () -> Unit) {
 
 @Preview(
     uiMode = UI_MODE_NIGHT_YES,
-    name = "DefaultPreviewDark"
+    name = "DefaultPreviewDark",
+    showBackground = true
 )
 @Preview(
     uiMode = UI_MODE_NIGHT_NO,
-    name = "DefaultPreviewLight"
+    name = "DefaultPreviewLight",
+    showBackground = true
 )
 @Composable
 fun WelcomeScreenPreviewLight() {
