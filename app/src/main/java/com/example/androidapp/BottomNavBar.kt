@@ -1,10 +1,13 @@
 package com.example.androidapp
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -12,6 +15,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.androidapp.home.HomeScreen
 import com.example.androidapp.mybooks.MyBooksScreen
 import com.example.androidapp.search.SearchScreen
@@ -33,7 +37,7 @@ fun BottomNavBar(navController: NavHostController) {
                     )
                 } == true,
                 onClick = {
-                    navController.navigateSingleTopTo(topLevelRoute.route)
+                    navController.navigateTo(topLevelRoute.route)
                 }
             )
         }
@@ -48,7 +52,7 @@ fun NavHost(navController: NavHostController) {
     ) {
         composable(route = Welcome.route) {
             WelcomeScreen(
-                onClickGetStarted = { navController.navigateSingleTopTo(Search.route) }
+                onClickGetStarted = { navController.navigateTo(Search.route) }
             )
         }
         composable(route = Home.route) {
@@ -63,13 +67,30 @@ fun NavHost(navController: NavHostController) {
     }
 }
 
-fun NavHostController.navigateSingleTopTo(route: String) =
+fun NavHostController.navigateTo(route: String) =
     this.navigate(route) {
         popUpTo(
-            this@navigateSingleTopTo.graph.findStartDestination().id
+            this@navigateTo.graph.findStartDestination().id
         ) {
             saveState = true
         }
         launchSingleTop = true
         restoreState = true
     }
+
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES,
+    name = "DefaultPreviewDark"
+)
+@Preview(
+    uiMode = UI_MODE_NIGHT_NO,
+    name = "DefaultPreviewLight"
+)
+@Composable
+fun BottomNavBarPreviewLight() {
+    AppTheme {
+        var navController = rememberNavController()
+        BottomNavBar(navController)
+    }
+
+}

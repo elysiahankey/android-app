@@ -26,7 +26,6 @@ fun BookshelfApp() {
             bottomBar = {
                     BottomNavBar(navController)
             }
-
         ) { innerPadding ->
             NavHost(navController)
         }
