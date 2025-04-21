@@ -58,9 +58,8 @@ fun MyBooksScreen(navController: NavHostController) {
 @Composable
 fun MyBooksScreenPreviewLight() {
     AppTheme {
-        MyBooksScreen(
-            navController = TODO()
-        )
+        var navController = rememberNavController()
+        MyBooksScreen(navController)
     }
 
 }

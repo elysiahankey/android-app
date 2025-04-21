@@ -58,9 +58,8 @@ fun HomeScreen(navController: NavHostController) {
 @Composable
 fun HomeScreenPreviewLight() {
     AppTheme {
-        HomeScreen(
-            navController = TODO()
-        )
+        var navController = rememberNavController()
+        HomeScreen(navController)
     }
 
 }

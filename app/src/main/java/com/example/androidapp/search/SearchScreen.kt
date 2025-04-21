@@ -24,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -35,6 +36,7 @@ import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.androidapp.AppTheme
@@ -42,7 +44,10 @@ import com.example.androidapp.BottomNavBar
 import com.example.androidapp.R
 
 @Composable
-fun SearchScreen(navController: NavHostController) {
+fun SearchScreen(
+    navController: NavHostController,
+    searchViewModel: SearchViewModel = viewModel()
+) {
     AppTheme {
         Scaffold(
             bottomBar = {
@@ -52,24 +57,23 @@ fun SearchScreen(navController: NavHostController) {
         ) { innerPadding ->
             Column(
                 modifier = Modifier
-                    .padding(vertical = 50.dp, horizontal = 20.dp)
+                    .padding(innerPadding)
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                val textFieldState = remember { TextFieldState() }
+
                 SearchIntro(
                     modifier = Modifier.padding(innerPadding),
                 )
-
-                Spacer(modifier = Modifier.size(20.dp))
-
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Bottom
                 ) {
                     BookSearchBar(
-                        textFieldState = TextFieldState(),
-                        onSearch = {},
-                        searchResults = listOf("", "", ""),
+                        textFieldState = textFieldState,
+                        onSearch = {  },
+                        searchResults = listOf("This", "Is", "A", "List"),
                         modifier = Modifier
                     )
                 }
@@ -158,9 +162,8 @@ fun BookSearchBar(
 @Composable
 fun SearchScreenPreviewLight() {
     AppTheme {
-        SearchScreen(
-            navController = TODO()
-        )
+        var navController = rememberNavController()
+        SearchScreen(navController)
     }
 
 }
